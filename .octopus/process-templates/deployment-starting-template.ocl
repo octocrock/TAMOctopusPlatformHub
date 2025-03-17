@@ -8,9 +8,9 @@ step "echo-starting" {
         action_type = "Octopus.Script"
         properties = {
             Octopus.Action.RunOnServer = "true"
-            Octopus.Action.Script.ScriptBody = "Write-Host \"Deployment Starting....\""
+            Octopus.Action.Script.ScriptBody = "echo \"Deployment Starting....\""
             Octopus.Action.Script.ScriptSource = "Inline"
-            Octopus.Action.Script.Syntax = "PowerShell"
+            Octopus.Action.Script.Syntax = "Bash"
             OctopusUseBundledTooling = "False"
         }
     }
