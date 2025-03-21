@@ -1,2 +1,26 @@
 name = "Package Deploy Template"
 description = ""
+
+step "deploy-package" {
+    name = "Deploy package"
+    properties = {
+        Octopus.Action.TargetRoles = "linux-lighthouse-agent"
+    }
+
+    action {
+        action_type = "Octopus.TentaclePackage"
+        properties = {
+            Octopus.Action.EnabledFeatures = ",Octopus.Features.ConfigurationTransforms,Octopus.Features.ConfigurationVariables"
+            Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles = "True"
+            Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            properties = {
+                SelectionMode = "deferred"
+            }
+        }
+    }
+}
