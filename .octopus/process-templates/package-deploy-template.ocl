@@ -2,7 +2,7 @@ name = "Package Deploy Template"
 description = ""
 
 step "deploy-package" {
-    name = "Deploy package"
+    name = "Deploy lighthouse agent"
     properties = {
         Octopus.Action.TargetRoles = "linux-lighthouse-agent"
     }
@@ -18,9 +18,13 @@ step "deploy-package" {
 
         packages {
             acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = "lighhouse"
             properties = {
-                SelectionMode = "deferred"
+                PackageParameterName = null
+                SelectionMode = "immediate"
             }
+            version = "lighhouse.1.0.0"
         }
     }
 }
