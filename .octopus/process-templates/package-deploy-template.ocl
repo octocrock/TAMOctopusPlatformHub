@@ -1,4 +1,4 @@
-name = "Package Deploy Template"
+name = "Lighthouse Deploy Template"
 description = ""
 
 step "deploy-package" {
