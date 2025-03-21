@@ -28,3 +28,28 @@ step "deploy-package" {
         }
     }
 }
+
+step "initiate-lighthouse" {
+    name = "Initiate lighthouse"
+    properties = {
+        Octopus.Action.TargetRoles = "linux-lighthouse-agent"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.AutoRetry.MaximumCount = "3"
+            Octopus.Action.AutoRetry.MinimumBackoff = "0"
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                echo "starting important configuration..."
+                
+                echo "started."
+                EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool_variable = ""
+    }
+}
