@@ -19,12 +19,11 @@ step "deploy-package" {
         packages {
             acquisition_location = "Server"
             feed = "octopus-server-built-in"
-            package_id = "lighhouse"
+            package_id = "lighthouse"
             properties = {
                 PackageParameterName = null
                 SelectionMode = "immediate"
             }
-            version = "lighhouse.1.0.0"
         }
     }
 }
